@@ -27,23 +27,21 @@
 }
 
 .book-box {
-   padding: 2px 0;
+  /*padding: 2px 0;*/
   width: 200px;
   margin: 10px;
   font-size: 24px;
 }
 
-.book_title{
-  width: 192px;
-  height: 24px;
+table{
+  padding: 10px 10px;
+  width: 853px;
 }
 
-.book_body {
-  width: 400px;
-  height: 24px;
+table th{
+  padding : 2px 5px;
 }
 
-.book_edit {
-  width: 145px;
-  height: 24px;
+table td{
+  padding : 2px 5px;
 }
