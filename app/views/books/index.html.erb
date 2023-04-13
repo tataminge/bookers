@@ -1,45 +1,79 @@
 <h1>Books</h1>
 
-<div class ="book-wrap">
+  <div class= "notice">
+    <%= flash[:notice] %>
+  </div>
 
   <table>
-    <tr>
-    <th>title</th> <th>body</th> <th></th>
-    </tr>
+    <thead>
+      <tr>
+        <th>title</th> <th>body</th> <th colspan="3"></th>
+      </tr>
+    </thead>
 
-    <% @books.each do |book| %>
-    <tr>
-    <th>
-    <<%= book.title %>
-    </th>
+    <tbody>
+      <% @books.each do |book| %>
+      <tr>
+        <td>
+          <%= book.title %>
+        </td>
 
-    <th>
-    <%= book.body %>
-    </th>
+        <td>
+          <%= book.body %>
+        </td>
 
-    <th>
-    <span>
-      <%= link_to "show", book_path(book.id) %>
-      <%= link_to "編集", edit_book_path(book.id) %>
-      <%= link_to "削除", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-    </span>
-    </tr>
+        <td>
+          <%= link_to "Show", book_path(book.id) %>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_book_path(book.id) %>
+        </td>
+        <td>
+          <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        </td>
+      </tr>
+
+
+      <% end %>
+    </tbody>
 
   </table>
-</div>
+
+  <!--<div class="field">-->
+    <!--<iframe src="books/new"></iframe>-->
+
+  <!--</div>-->
+
+<h1>New book</h1>
 
 
+<!--バリテーションでエラーになったとき-->
+<% if @book.errors.any? %>
+  <%= @book.errors.count %> errors prohibited this book from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-  <!--<p>タイトル</p>-->
-  <span>
-    <!--<%= link_to book.title, book_path(book.id) %>-->
-  <!--</span>-->
 
-  <!--<p>内容</p>-->
-    <!--<%= link_to book.body, book_path(book.id) %>-->
+<%= form_with model: @book, url: '/books', method: :post do |f| %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
 
-    <!--<%= link_to "show", book_path(book.id) %>-->
-    <!--<%= link_to "編集", edit_book_path(book.id) %>-->
-    <!--<%= link_to "削除", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>-->
+  <h4>Body</h4>
+  <%= f.text_area :body %>
+
+
+  <p><%= f.submit 'Create Book' %></p>
+
 
 <% end %>
+
+
+
+
+
+
+

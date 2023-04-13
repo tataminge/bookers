@@ -1,10 +1,20 @@
-<h1>詳細画面</h1>
 
-<h2>タイトル</h2>
-<p><%= @book.title %></p>
+<div class="show">
 
-<h2>本文</h2>
-<p><%= @book.body %></p>
+  <div class= "notice">
+    <%= flash[:notice] %>
+  </div>
 
-<%= link_to "編集", edit_book_path(@book.id) %>
-<%= link_to "削除", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <p>
+    <strong>title:</strong><%= @book.title %>
+  </p>
+  <p>
+    <strong>Body:</strong><%= @book.body %>
+  </p>
+
+  <span>
+    <%= link_to "edit", edit_book_path(@book.id) %> |
+    <%= link_to "back", "/books" %>
+  </span>
+
+</div>
