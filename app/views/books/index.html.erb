@@ -1,0 +1,34 @@
+<h1>Books</h1>
+
+<div class ="book-wrap">
+  <% @books.each do |book| %>
+
+  <table class = "book_box">
+
+    <span class= "book_title"><%= book.title %></span>
+    <span class= "book_body"><%= book.body %></span>
+
+    <span class= "book_edit">
+      <%= link_to "show", book_path(book.id) %>
+      <%= link_to "編集", edit_book_path(book.id) %>
+      <%= link_to "削除", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      </span>
+
+  </table>
+</div>
+
+
+
+  <!--<p>タイトル</p>-->
+  <span>
+    <!--<%= link_to book.title, book_path(book.id) %>-->
+  <!--</span>-->
+
+  <!--<p>内容</p>-->
+    <!--<%= link_to book.body, book_path(book.id) %>-->
+
+    <!--<%= link_to "show", book_path(book.id) %>-->
+    <!--<%= link_to "編集", edit_book_path(book.id) %>-->
+    <!--<%= link_to "削除", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>-->
+
+<% end %>
